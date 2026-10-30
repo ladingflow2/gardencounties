@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GardenCounties: MMORPG grátis no navegador | Crônicas do Condado</title>
+<meta name="description" content="Construa um feudo, domine o mercado e dispute o ouro do condado em um MMORPG grátis, sem vantagem paga, no celular ou no PC.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Construa um feudo. Dispute o ouro do condado.">
+<meta property="og:description" content="MMORPG persistente de economia, política e guerra. Grátis, sem vantagem paga, no celular ou no PC.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Cinzel:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--bg2:#050506;--card:#0d0d10;--card2:#15151a;--line:rgba(255,255,255,.08);--ink:#ece6d6;--mute:#9aa0b2;--gold:#d4a84b;--gold2:#f0cd7a;--gold3:#a67c2a;--red:#c0483f;--green:#5fae7a;
+--serif:'Cinzel',Georgia,serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--sans);overflow-x:clip}
+img,svg{max-width:100%}h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.15;margin:0;letter-spacing:.3px}
+p{margin:0}a{color:inherit}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 1.25rem}
+section{padding:4.5rem 0}
+.eyebrow{display:block;font:700 .72rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+h2{font-size:clamp(1.7rem,4.6vw,2.7rem);margin-bottom:.9rem}
+.sub{color:var(--mute);max-width:40rem;margin-bottom:2.2rem}
+.skip{position:absolute;left:-999px;top:0;background:var(--gold);color:#1a1408;padding:.6rem 1rem;z-index:99}.skip:focus{left:0}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:50px;padding:.85rem 1.6rem;border-radius:12px;border:1px solid transparent;font:700 .95rem var(--sans);letter-spacing:.2px;text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s,color .2s}
+.btn-gold{background:linear-gradient(180deg,var(--gold2),var(--gold) 55%,var(--gold3));color:#1a1408;box-shadow:0 8px 22px -10px rgba(212,168,75,.7),inset 0 1px 0 rgba(255,255,255,.35)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(212,168,75,.8),inset 0 1px 0 rgba(255,255,255,.35)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:rgba(212,168,75,.45)}
+.btn-ghost:hover{border-color:var(--gold2);color:var(--gold2);background:rgba(212,168,75,.07)}
+.btn-lg{min-height:58px;padding:1rem 2rem;font-size:1.05rem}
+.btn:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.btn svg{width:18px;height:18px;flex:none}
+/* nav */
+nav{position:sticky;top:0;z-index:30;background:rgba(0,0,0,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:68px}
+.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;font:700 1.05rem var(--serif);letter-spacing:.4px}.brand svg{width:30px;height:30px}
+.links{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0}.links a{text-decoration:none;color:var(--mute);font-size:.9rem;transition:color .2s}.links a:hover{color:var(--gold2)}
+.nav-cta{display:flex;gap:.6rem}.nav-cta .btn{min-height:42px;padding:.5rem 1.1rem;font-size:.85rem}
+@media(max-width:860px){.links{display:none}.nav-cta .btn-ghost{display:none}}
+/* hero */
+.hero{padding:4rem 0 4.5rem;background:radial-gradient(900px 420px at 80% -10%,rgba(212,168,75,.12),transparent 60%),var(--bg)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+.hero h1{font-size:clamp(2.1rem,5.6vw,3.7rem);margin-bottom:1.2rem}.hero h1 em{font-style:normal;color:var(--gold2)}
+.lead{font-size:1.08rem;color:#c9c5b8;max-width:34rem;margin-bottom:1.8rem}.lead b{color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem;padding:0;list-style:none}
+.chips li{padding:.45rem .9rem;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:.8rem;color:var(--mute)}.chips li:before{content:"◆";color:var(--gold);margin-right:.45rem;font-size:.6rem}
+.slot{aspect-ratio:4/5;border-radius:20px;border:1px dashed rgba(212,168,75,.4);background:linear-gradient(160deg,var(--card),var(--bg2));display:grid;place-items:center;text-align:center;color:var(--mute);font-size:.85rem;padding:1.5rem}
+.slot b{display:block;color:var(--gold);font:700 1rem var(--serif);margin-bottom:.3rem}
+@media(max-width:860px){.hero{padding:2.5rem 0 3.5rem}.hero .wrap{grid-template-columns:1fr;gap:2rem}.slot{aspect-ratio:16/10;order:-1}.cta .btn{flex:1 1 100%}}
+/* cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.5rem;transition:border-color .25s,transform .25s}
+.card:hover{border-color:rgba(212,168,75,.45)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}.grid4{grid-template-columns:1fr 1fr}}@media(max-width:480px){.grid4{grid-template-columns:1fr}}
+.alt{background:var(--bg2);border-block:1px solid var(--line)}
+.pain{display:flex;gap:1rem;align-items:flex-start}.pain svg{width:34px;height:34px;flex:none;stroke:var(--red);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.pain h3{font-size:1.15rem;margin-bottom:.35rem}.pain p{color:var(--mute);font-size:.93rem}
+.agit{max-width:46rem;margin:2.2rem 0 1.6rem;color:#c9c5b8;font-size:1.05rem}.agit b{color:var(--ink)}
+.pivot{border-left:3px solid var(--gold);padding-left:1.2rem;max-width:46rem;font:600 clamp(1.15rem,2.6vw,1.5rem)/1.45 var(--serif)}.pivot em{font-style:normal;color:var(--gold2)}
+/* offer */
+.offer{max-width:640px;margin:0 auto;background:var(--card);border:1px solid rgba(212,168,75,.45);border-radius:22px;padding:2rem 1.4rem;box-shadow:0 30px 60px -30px #000,0 0 0 6px rgba(212,168,75,.05)}
+.offer h3{text-align:center;font-size:1.6rem;margin-bottom:.3rem}.offer .tag{display:block;text-align:center;color:var(--mute);font-size:.88rem;margin-bottom:1.4rem}
+.rows{display:grid;gap:.6rem}.row{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;background:var(--card2);border-radius:10px;border-bottom:2px solid var(--gold3);font-size:.92rem}
+.row svg{width:20px;height:20px;flex:none;stroke:var(--gold);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}.row span{flex:1}.row i{font-style:normal;font-weight:700;color:var(--green);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.price{text-align:center;margin:1.8rem 0 1.3rem}.price small{display:block;color:var(--mute);font-size:.88rem}.price b{display:block;font:700 clamp(3.4rem,14vw,5.2rem)/1 var(--serif);color:var(--gold2);margin:.2rem 0}
+.offer .btn{width:100%}.guar{text-align:center;color:var(--mute);font-size:.82rem;margin-top:1rem}
+/* numbers */
+.num{text-align:center}.num b{display:block;font:700 clamp(2rem,6vw,2.8rem)/1 var(--serif);color:var(--gold2);margin-bottom:.4rem}.num span{color:var(--mute);font-size:.88rem}
+/* path */
+.step{position:relative}.step .n{font:700 .75rem var(--sans);letter-spacing:.2em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:.5rem}.step h3{font-size:1.4rem;margin-bottom:.5rem}.step p{color:var(--mute);font-size:.92rem}
+.facts{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem;padding:0;list-style:none}.facts li{padding:.55rem 1rem;border:1px solid var(--line);border-radius:10px;background:var(--card);font-size:.85rem;color:#c9c5b8}.facts b{color:var(--gold2)}
+/* faq */
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem}summary{cursor:pointer;list-style:none;padding:1.05rem 1.2rem;font-weight:600;display:flex;justify-content:space-between;gap:1rem;min-height:52px;align-items:center}
+summary::-webkit-details-marker{display:none}summary:after{content:"+";color:var(--gold);font-size:1.4rem;line-height:1}details[open] summary:after{content:"−"}details[open]{border-color:rgba(212,168,75,.4)}details p{padding:0 1.2rem 1.1rem;color:var(--mute);font-size:.94rem}
+/* final */
+.final{text-align:center;background:radial-gradient(700px 320px at 50% 0%,rgba(212,168,75,.12),transparent 70%),var(--bg2);border-top:1px solid var(--line)}
+.final .band{color:var(--gold);font:700 .72rem var(--sans);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem}.final h2{max-width:36rem;margin-inline:auto}.final .sub{margin-inline:auto}
+.final .cta{justify-content:center}
+.ok{display:none;max-width:520px;margin:2rem auto 0;text-align:left;background:var(--card);border:1px solid var(--gold3);border-radius:18px;padding:1.5rem}.ok.on{display:block}.ok h3{font-size:1.25rem;margin-bottom:.8rem;color:var(--gold2)}
+.ok ol{margin:0;padding-left:1.2rem;color:#c9c5b8;display:grid;gap:.5rem;font-size:.94rem}.ok ol li::marker{color:var(--gold);font-weight:700}
+footer{padding:2.2rem 0 2.6rem;border-top:1px solid var(--line);color:var(--mute);font-size:.8rem;text-align:center}footer .fl{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;justify-content:center;margin-bottom:1rem}footer a{color:var(--mute);text-decoration:none;padding:.4rem 0}footer a:hover{color:var(--gold2)}footer p{max-width:44rem;margin:.4rem auto 0}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== HERO (video + sequenced buttons) ===== */
+.final{background:#000}
+.hx{position:relative;min-height:calc(100svh - 68px);background:#000;overflow:hidden;display:flex;align-items:flex-end}
+.hx-bg{position:absolute;inset:0}.hx-bg video{width:100%;height:100%;object-fit:cover;display:block}
+.hx:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,#000 0,rgba(0,0,0,.6) 30%,transparent 58%)}
+.hx-ui{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:0 1.25rem 2.2rem}
+.hx-col{display:grid;gap:.85rem;justify-items:center;text-align:center}
+.hx h1{font-size:clamp(1.9rem,8vw,3.3rem);text-shadow:0 2px 26px #000}.hx h1 em{font-style:normal;color:var(--gold2)}
+.hx .lead{margin:0;font-size:.98rem;color:#d9d4c6;text-shadow:0 1px 14px #000}
+.pls{display:flex;flex-wrap:wrap;gap:.55rem;justify-content:center}
+.pl{display:inline-flex;align-items:center;gap:.6rem;padding:.65rem 1.1rem;border-radius:999px;background:rgba(8,8,10,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(212,168,75,.5);font:600 .9rem var(--sans);color:var(--ink)}
+.pl.tag{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.pl svg{width:18px;height:18px;fill:none;stroke:var(--gold2);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24}
+.hx .rv{opacity:0;transform:translateY(18px) scale(.96);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.hx .rv.in{opacity:1;transform:none}
+.hx .pl.in svg{animation:ck .6s .15s ease forwards}.hx .pl.in:not(.tag){animation:glow 3.4s ease-in-out 1s infinite}
+@keyframes ck{to{stroke-dashoffset:0}}@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(212,168,75,0)}50%{box-shadow:0 0 22px -4px rgba(212,168,75,.5)}}
+
+.hx .lead{display:none}
+.hx .pls{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;width:100%}
+.hx .pl{justify-content:center;padding:.6rem .6rem;font-size:.8rem}.hx .pl.tag{padding:.45rem 1rem}
+.hx .cta{display:grid;gap:.5rem;width:100%}.hx .cta .btn{min-height:48px;font-size:.92rem;padding:.7rem 1.2rem}
+.hx h1{font-size:clamp(1.65rem,7.2vw,2.3rem)}
+.brand{font-size:.92rem}.nav-cta .btn{white-space:nowrap}
+@media(max-width:420px){.brand{font-size:.8rem;gap:.45rem}.brand svg{width:24px;height:24px}.nav-cta .btn{padding:.5rem .8rem;font-size:.78rem}}
+
+@media(min-width:861px){
+.hx{align-items:center}.hx:after{background:linear-gradient(to left,rgba(0,0,0,.78) 0,rgba(0,0,0,.35) 38%,transparent 62%)}
+.hx-ui{display:flex;justify-content:flex-end;padding:3rem 2rem}
+.hx-col{max-width:31rem;justify-items:start;text-align:left}.hx h1{font-size:clamp(2.2rem,3.6vw,3.2rem)}
+.hx .lead{display:block}.hx .pls{display:flex;justify-content:flex-start;width:auto}.hx .pl{padding:.65rem 1.1rem;font-size:.9rem}.hx .cta{display:flex;flex-wrap:wrap;justify-content:flex-start;width:auto}.hx .cta .btn{min-height:58px;font-size:1.05rem;padding:1rem 2rem}.hx-bg video{width:110%;transform:translateX(-7%)}
+}
+@media(prefers-reduced-motion:reduce){.hx .pl{animation:none!important}}
+
+.tl{position:relative;display:grid;gap:4.5rem;margin:2.4rem 0 .5rem;padding:.5rem 0}
+.tl-svg{position:absolute;left:38px;top:0;width:2px;height:100%;transform:translateX(-1px);overflow:visible;pointer-events:none}
+.tl-bg{stroke:rgba(255,255,255,.1);stroke-width:2;stroke-dasharray:4 7}
+.tl-prog{stroke:#ffd84d;stroke-width:2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 7px rgba(255,216,77,.8)) drop-shadow(0 0 16px rgba(255,216,77,.35))}
+.tl-step{position:relative;min-height:84px;padding-left:6.4rem;display:flex;align-items:center;opacity:.4;transition:opacity .6s ease}
+.tl-step.on{opacity:1}
+.tl-node{position:absolute;left:0;top:50%;width:76px;height:76px;margin-top:-38px;border-radius:50%;display:grid;place-items:center;z-index:1;background:radial-gradient(circle,rgba(255,216,77,.02),#000 72%);border:1px solid rgba(255,255,255,.14);font:500 .9rem ui-monospace,Menlo,Consolas,monospace;color:var(--mute);transition:all .6s ease}
+.tl-step.on .tl-node{border-color:rgba(255,216,77,.7);color:#ffe58a;background:radial-gradient(circle,rgba(255,216,77,.16),#000 72%);box-shadow:0 0 26px rgba(255,216,77,.28),inset 0 0 22px rgba(255,216,77,.1)}
+.tl-body small{display:block;font:700 .7rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.tl-body h3{font-size:1.3rem;margin-bottom:.35rem;transform-origin:left center;transition:transform .5s ease,color .5s}
+.tl-body p{color:var(--mute);font-size:.94rem;max-width:34rem}.tl-body p b{color:var(--ink)}
+.tl-step.on h3{color:#ffe58a;transform:scale(1.18);animation:tlPulse .9s ease}
+.tl-step.on .tl-node{animation:nodePulse .9s ease}
+@keyframes tlPulse{0%{transform:scale(1)}45%{transform:scale(1.34)}100%{transform:scale(1.18)}}
+@keyframes nodePulse{0%{transform:scale(1)}45%{transform:scale(1.14)}100%{transform:scale(1)}}
+@media(max-width:560px){.tl{gap:3.2rem}.tl-svg{left:30px}.tl-step{padding-left:5.2rem}.tl-node{width:60px;height:60px;margin-top:-30px;font-size:.8rem}.tl-body h3{font-size:1.15rem}}
+@media(prefers-reduced-motion:reduce){.tl-step,.tl-step *{animation:none!important;transition:none!important}.tl-step.on h3{transform:none}}
+
+/* ===== gold checks + rows + counters ===== */
+.hx .pl svg.ck,.row svg.ck{fill:none;stroke:none;stroke-dasharray:none;stroke-dashoffset:0;flex:none;overflow:visible}
+.hx .pl svg.ck{width:28px;height:28px;transform:scale(.2);opacity:0;filter:drop-shadow(0 0 6px rgba(240,205,122,.55))}
+.hx .pl.in svg.ck{animation:pump .95s cubic-bezier(.34,1.4,.64,1) .12s forwards}
+@keyframes pump{0%{transform:scale(.2);opacity:0}45%{opacity:1}62%{transform:scale(1.4)}100%{transform:scale(1);opacity:1}}
+.hx .pl{gap:.55rem;padding-left:.8rem}
+.row{opacity:.45;transition:opacity .5s,border-color .5s,box-shadow .5s}
+.row svg.ck{width:32px;height:32px;transform:scale(.55);filter:grayscale(1) brightness(.5);transition:filter .5s}
+.row span{font-size:.92rem;transition:font-size .5s ease,color .5s}
+.row.on{opacity:1;border-bottom-color:var(--gold2);box-shadow:0 10px 26px -16px rgba(240,205,122,.7)}
+.row.on span{font-size:1.06rem;color:#fff3cf}
+.row.on svg.ck{filter:drop-shadow(0 0 8px rgba(240,205,122,.7));animation:pump 1s cubic-bezier(.34,1.4,.64,1) forwards}
+@media(prefers-reduced-motion:reduce){.hx .pl svg.ck,.row svg.ck{animation:none!important;transform:none;opacity:1;filter:none}.row{opacity:1}}
+
+/* ===== Gold gleaming button ===== */
+@keyframes goldShimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+.btn{border-radius:999px;font-family:'Syne',var(--sans);text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+.btn-gold{position:relative;overflow:hidden;isolation:isolate;color:#1a1600;
+ background:linear-gradient(135deg,#ffd700 0%,#d4af37 50%,#b8860b 100%);border:1px solid rgba(255,255,255,.5);
+ box-shadow:inset 0 0 20px rgba(255,255,255,.4),inset 0 2px 2px rgba(255,255,255,.8),inset 0 -4px 10px rgba(139,101,8,.6),0 14px 30px -14px rgba(212,175,55,.6);
+ text-shadow:0 1px 1px rgba(255,255,255,.3);font-size:.85rem;gap:.9rem;
+ transition:transform .5s cubic-bezier(.4,0,.2,1),box-shadow .5s,background .4s,border-color .4s}
+.btn-gold::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23ffffff' filter='url(%23n)'/%3E%3C/svg%3E")}
+.btn-gold::after{content:"";position:absolute;top:0;left:0;width:200%;height:100%;z-index:-1;pointer-events:none;opacity:.6;transform:skewX(-20deg);
+ background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0) 40%,rgba(255,255,255,.8) 50%,rgba(255,255,255,0) 60%,transparent 100%);background-size:50% 100%;background-repeat:no-repeat;animation:goldShimmer 2.5s infinite linear;transition:opacity .3s}
+.btn-gold:hover{transform:translateY(-6px) scale(1.02);border-color:#fff;background:linear-gradient(135deg,#ffe040 0%,#ffd700 50%,#d4af37 100%);color:#000;
+ box-shadow:inset 0 0 30px rgba(255,255,255,.6),inset 0 2px 3px #fff,inset 0 -4px 10px rgba(139,101,8,.3),0 24px 44px -14px rgba(212,175,55,.75)}
+.btn-gold:hover::after{opacity:1;animation-duration:1.5s}
+.btn-gold svg{transition:transform .4s cubic-bezier(.34,1.56,.64,1),filter .4s}
+.btn-gold:hover svg{transform:translateX(8px) scale(1.15);filter:drop-shadow(0 0 5px rgba(255,255,255,.6))}
+.btn-lg.btn-gold{font-size:.95rem}
+.btn-ghost{font-size:.85rem}.btn-lg.btn-ghost{font-size:.9rem}
+.nav-cta .btn{font-size:.72rem;letter-spacing:.08em}
+.hx .cta .btn.btn-gold,.hx .cta .btn.btn-ghost{font-size:.84rem}
+@media(min-width:861px){.hx .cta .btn.btn-gold,.hx .cta .btn.btn-ghost{font-size:.92rem}}
+@media(max-width:480px){.btn{letter-spacing:.06em}.btn-gold{font-size:.78rem}.btn-lg.btn-gold{font-size:.8rem}.nav-cta .btn{padding:.5rem .8rem;font-size:.66rem}.hx .cta .btn.btn-gold,.hx .cta .btn.btn-ghost{font-size:.78rem}}
+@media(prefers-reduced-motion:reduce){.btn-gold::after{animation:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3c9"/><stop offset=".35" stop-color="#f0cd7a"/><stop offset=".7" stop-color="#d4a84b"/><stop offset="1" stop-color="#8f6a1f"/></linearGradient><symbol id="ck" viewBox="0 0 32 32"><path d="M3.6 17.2C5.6 15.4 8 15.2 9.6 16.8L12.4 19.9C16.2 13.4 21.4 7.6 28.6 3.6C29.6 3.1 30.3 4.3 29.5 5C22.9 10.8 18.3 17.3 14.3 25.2C13.7 26.4 12.4 26.6 11.5 25.7L3.9 19C3.1 18.3 3.2 17.6 3.6 17.2Z" fill="url(#gk)" stroke="#8f6a1f" stroke-width=".5" stroke-linejoin="round" stroke-dasharray="none"/><path d="M7 18.4L12 22.8M14.6 21.4C17.8 15.6 22 10.6 27.4 6.6" fill="none" stroke="rgba(255,255,255,.78)" stroke-width=".9" stroke-linecap="round" stroke-dasharray="none"/></symbol></defs></svg><a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<nav aria-label="Principal"><div class="wrap">
+ <a class="brand" href="#topo"><svg viewBox="0 0 32 32" fill="none" stroke="#d4a84b" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M7 29V13l3-2V7h3v3h2V7h3v3h2V7h3v4l3 2v16z"/><path d="M13 29v-7a3 3 0 0 1 6 0v7"/></svg>Crônicas do Condado</a>
+ <ul class="links"><li><a href="#sistemas">O que você leva</a></li><li><a href="#mundo">O mundo</a></li><li><a href="#duvidas">Dúvidas</a></li></ul>
+ <div class="nav-cta"><a class="btn btn-ghost" href="https://www.gardencounties.com/login" target="_blank" rel="noopener">Já tenho conta</a><a class="btn btn-gold" href="https://www.gardencounties.com/register" target="_blank" rel="noopener">Criar conta grátis</a></div>
+</div></nav>
+
+<main id="conteudo">
+<header class="hx" id="topo">
+ <div class="hx-bg"><video id="hv" muted playsinline loop autoplay preload="auto" poster="poster_desktop.jpg" data-d="helmet_desktop.mp4" data-m="helmet_mobile.mp4" data-pd="poster_desktop.jpg" data-pm="poster_mobile.jpg" aria-label="Elmo de guerreiro em chamas"></video></div>
+ <div class="hx-ui"><div class="hx-col">
+  <span class="pl tag rv" data-p="0">MMORPG grátis no navegador</span>
+  <h1 class="rv" data-p=".05">Construa um feudo. Dispute o <em>ouro do condado</em> sem pagar para vencer.</h1>
+  <p class="lead rv" data-p=".1">Economia, política e guerra feitas pelos jogadores. Sessões de poucos minutos, no celular ou no PC.</p>
+  <div class="pls"><span class="pl rv" data-p="0.14"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg>Mundo único</span><span class="pl rv" data-p="0.2"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg>Um herói por conta</span><span class="pl rv" data-p="0.26"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg>Sem vantagem paga</span><span class="pl rv" data-p="0.32"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg>Celular ou PC</span></div>
+  <div class="cta rv" data-p=".42"><a class="btn btn-gold btn-lg" href="https://www.gardencounties.com/register" target="_blank" rel="noopener">Criar minha conta grátis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost btn-lg" href="#sistemas">Ver o que está incluso</a></div>
+ </div></div>
+</header>
+
+
+
+<section id="sistemas" class="alt"><div class="wrap">
+ <span class="eyebrow">O que você leva</span><h2>Tudo isto, na conta gratuita</h2>
+ <p class="sub">Sem conta premium e sem pacote de vantagem. O que existe é para todo mundo.</p>
+ <div class="offer">
+  <h3>Conta GardenCounties</h3><span class="tag">Mundo único · um herói por conta</span>
+  <div class="rows">
+   <div class="row"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg><span>Economia 100% de jogadores, com preços vindos das pools</span><i>Grátis</i></div>
+   <div class="row"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg><span>Herói com 5 atributos e 11 habilidades</span><i>Grátis</i></div>
+   <div class="row"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg><span>Ferraria, alquimia e equipamento forjado por você</span><i>Grátis</i></div>
+   <div class="row"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg><span>Mercado local e global, comboios e Veneza</span><i>Grátis</i></div>
+   <div class="row"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg><span>Terras, construções e renda em ouro</span><i>Grátis</i></div>
+   <div class="row"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg><span>Aventuras PvE, missões e espólio de verdade</span><i>Grátis</i></div>
+   <div class="row"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg><span>Guerra entre condados: regimentos, cercos e território</span><i>Grátis</i></div>
+   <div class="row"><svg class="ck" viewBox="0 0 32 32" aria-hidden="true"><use href="#ck"/></svg><span>Mapa-mundi com 322 regiões, chat e wiki dos jogadores</span><i>Grátis</i></div>
+  </div>
+  <div class="price"><small>Para jogar, você paga</small><b>R$ 0</b><small>Sem conta premium. Evolui quem joga.</small></div>
+  <a class="btn btn-gold btn-lg" href="https://www.gardencounties.com/register" target="_blank" rel="noopener">Sim, quero meu herói grátis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <p class="guar">Perder uma batalha não tira nível de habilidade: quem perde foge e segue jogando.</p>
+ </div>
+</div></section>
+
+<section id="numeros"><div class="wrap">
+ <span class="eyebrow">Os números na mesa</span><h2>Um mundo com regra clara</h2>
+ <p class="sub">Tudo o que o jogo mostra publicamente, sem enrolação. As regras completas ficam na wiki oficial.</p>
+ <div class="grid4">
+  <div class="card num"><b data-to="322">322</b><span>regiões, do nível 1 ao 5</span></div>
+  <div class="card num"><b data-to="11">11</b><span>habilidades para dominar</span></div>
+  <div class="card num"><b data-to="10" data-suf=" s">10 s</b><span>por ação, em sessões curtas</span></div>
+  <div class="card num"><b data-to="1" data-suf="%">1%</b><span>de juros ao mês no banco</span></div>
+  <div class="card num"><b data-to="6">6</b><span>recursos, uma economia inteira</span></div>
+  <div class="card num"><b data-to="5">5</b><span>atributos no seu herói</span></div>
+  <div class="card num"><b data-to="100">100</b><span>de ouro para fundar um condado</span></div>
+  <div class="card num"><b>R$ 0</b><span>de vantagem paga</span></div>
+ </div>
+</div></section>
+
+<section id="mundo" class="alt"><div class="wrap" style="max-width:860px">
+ <span class="eyebrow">Como começar</span><h2>Do zero ao condado em quatro passos</h2>
+ <p class="sub">Role a página e acompanhe o caminho do seu herói, de plebeu até a coroa.</p>
+ <div class="tl" id="tl"><svg class="tl-svg" aria-hidden="true"><line x1="1" y1="0" x2="1" y2="100%" class="tl-bg"/><line x1="1" y1="0" x2="1" y2="100%" class="tl-prog" pathLength="1"/></svg><div class="tl-step"><span class="tl-node">01</span><div class="tl-body"><small>Passo 1</small><h3>Crie seu herói</h3><p>Escolha um dos 16 retratos e distribua <b>5 pontos de atributo</b> e <b>3 de habilidade</b> no cadastro.</p></div></div><div class="tl-step"><span class="tl-node">02</span><div class="tl-body"><small>Passo 2</small><h3>Produza</h3><p>Floresta e campo. Cada ação dura <b>10 s</b> e gasta <b>5 de energia</b>. O trigo amadurece sozinho em 6 h.</p></div></div><div class="tl-step"><span class="tl-node">03</span><div class="tl-body"><small>Passo 3</small><h3>Venda e invista</h3><p>Mercado, oficina, treino, banco e <b>minas</b>. O banco rende <b>1% ao mês</b> em juros compostos, e <b>cada mina gera renda diária em ouro</b>.</p></div></div><div class="tl-step"><span class="tl-node">04</span><div class="tl-body"><small>Passo 4</small><h3>Suba de posto</h3><p>Funde um condado com <b>100 de ouro</b> e siga rumo a duque e rei.</p></div></div></div>
+ <ul class="facts"><li>Atravessar o mapa leva <b>~25 min</b> por terra</li><li>Mar e rio são <b>15×</b> mais rápidos</li><li>Montanhas: <b>50%</b> da velocidade</li><li>Bandidos patrulham as rotas</li></ul>
+</div></section>
+
+<section id="duvidas"><div class="wrap" style="max-width:820px">
+ <span class="eyebrow">Perguntas frequentes</span><h2>Antes de criar a conta</h2>
+ <div style="margin-top:2rem">
+  <details><summary>Preciso pagar para jogar?</summary><p>Não. Não há conta premium nem vantagem comprada: evolui quem joga.</p></details>
+  <details><summary>Funciona no celular?</summary><p>Sim. Roda no navegador do computador ou do celular e pode ir para a tela inicial como um app.</p></details>
+  <details><summary>Posso ter mais de um herói?</summary><p>Não: um herói por conta e uma conta por pessoa (CPF).</p></details>
+  <details><summary>Por que pedem CPF e telefone?</summary><p>O CPF identifica a conta e é exigido para depósitos e saques via PIX. Ninguém mais o vê. Depois, você confirma o e-mail com um código.</p></details>
+  <details><summary>O que acontece quando fico offline?</summary><p>O mundo segue: vida e energia regeneram, obras e viagens terminam. Fique de olho no salário das tropas e nos prazos das missões.</p></details>
+  <details><summary>Posso perder meu herói?</summary><p>Não. Quem perde foge e segue jogando, e habilidade nunca perde nível. Morrer numa aventura custa 5% dos níveis de atributo, e bandidos vencedores levam de 10% a 50% do que você carrega.</p></details>
+ </div>
+</div></section>
+
+<section class="final" id="entrar"><div class="wrap">
+ <div class="band">O condado está esperando um dono</div>
+ <h2>Amanhã você ainda vai jogar para os outros, ou vai construir o <span style="color:var(--gold2)">seu feudo</span>?</h2>
+ <p class="sub">Crie o herói em menos de um minuto e faça sua primeira ação em 10 segundos.</p>
+ <div class="cta"><a class="btn btn-gold btn-lg" id="go" href="https://www.gardencounties.com/register" target="_blank" rel="noopener">Sim, eu quero meu condado <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost btn-lg" href="https://www.gardencounties.com/wiki" target="_blank" rel="noopener">Ler a wiki antes</a></div>
+ <div class="ok" id="ok" role="status"><h3>Boa! Seus três primeiros passos</h3><ol><li>Crie o herói e escolha um dos 16 retratos.</li><li>Distribua <b>5 pontos de atributo</b> e <b>3 de habilidade</b>.</li><li>Faça a primeira ação: cada uma leva <b>10 segundos</b>.</li></ol></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="fl"><a href="https://www.gardencounties.com/" target="_blank" rel="noopener">Site oficial</a><a href="https://www.gardencounties.com/wiki" target="_blank" rel="noopener">Wiki</a><a href="https://www.gardencounties.com/login" target="_blank" rel="noopener">Já tenho conta</a><a href="https://www.gardencounties.com/register" target="_blank" rel="noopener">Criar conta</a></div>
+ <p><b>Crônicas do Condado</b> é um site de fã, não oficial. GardenCounties pertence aos seus criadores.</p>
+ <p>Dados conferidos no site oficial em 29/10/2026 e sujeitos a mudança. Jogue com responsabilidade.</p>
+</div></footer>
+<script>
+(()=>{const v=document.getElementById('hv');if(!v)return;const mq=matchMedia('(max-width:860px)');let blocked=matchMedia('(prefers-reduced-motion:reduce)').matches,done=false,pt=0;
+const els=[...document.querySelectorAll('.hx .rv')];
+function pick(){const m=mq.matches,u=m?v.dataset.m:v.dataset.d;if(v.dataset.cur===u)return;v.dataset.cur=u;v.poster=m?v.dataset.pm:v.dataset.pd;v.src=u;v.load();const p=v.play();p&&p.catch(()=>{blocked=true})}
+mq.addEventListener('change',pick);pick();
+v.addEventListener('error',()=>{blocked=true});v.addEventListener('playing',()=>{blocked=false});
+['pointerdown','keydown','touchend'].forEach(e=>addEventListener(e,()=>{if(v.paused)v.play().catch(()=>{})},{once:true}));
+(function loop(){const d=v.duration||8,t=v.currentTime||0;if(pt-t>1)done=true;pt=t;els.forEach(e=>e.classList.toggle('in',blocked||done||t/d>=+e.dataset.p));requestAnimationFrame(loop)})();
+})();
+document.getElementById('go').addEventListener('click',function(){document.getElementById('ok').classList.add('on')});
+(()=>{const tl=document.getElementById('tl');if(!tl)return;const ln=tl.querySelector('.tl-prog'),st=[...tl.querySelectorAll('.tl-step')];let c=0,t=0;
+function calc(){const r=tl.getBoundingClientRect(),trig=innerHeight*.62;t=Math.max(0,Math.min(1,(trig-r.top)/r.height));st.forEach(x=>{const n=x.querySelector('.tl-node').getBoundingClientRect();x.classList.toggle('on',n.top+n.height/2<trig)})}
+(function tick(){c+=(t-c)*.12;ln.style.strokeDashoffset=1-c;requestAnimationFrame(tick)})();
+addEventListener('scroll',calc,{passive:true});addEventListener('resize',calc);calc()})();
+(()=>{const rows=[...document.querySelectorAll('.row')];function calc(){const trig=innerHeight*.72;rows.forEach(r=>{const b=r.getBoundingClientRect();r.classList.toggle('on',b.top+b.height/2<trig)})}addEventListener('scroll',calc,{passive:true});addEventListener('resize',calc);calc()})();
+(()=>{const g=document.getElementById('numeros');if(!g)return;const nums=[...g.querySelectorAll('b[data-to]')];if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;const fmt=(n,b)=>Math.round(n)+(b.dataset.suf||'');nums.forEach(b=>b.textContent=fmt(0,b));
+const run=b=>{const to=+b.dataset.to,t0=performance.now(),D=1900;(function f(t){const p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);b.textContent=fmt(to*e,b);if(p<1)requestAnimationFrame(f)})(t0)};
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){nums.forEach((b,i)=>setTimeout(()=>run(b),i*110));o.disconnect()}}),{threshold:.35}).observe(g.querySelector('.grid4'))})();
+</script>
+</body>
+</html>
